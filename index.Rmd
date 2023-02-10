@@ -1,0 +1,62 @@
+---
+title: "Penguins Website"
+author: "Martina Morelli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## Data
+Penguins is a dataset that's available at https://allisonhorst.github.io/palmerpenguins/. Its purpose is to provide a good dataset for manipulation and visualization. There are two datasets: `penguins` and `penguins_raw`.  
+
+
+![](https://www.gabemednick.com/post/penguin/featured.png)
+
+## Single trait distribution 
+
+How do bill lengths differ by species?
+```{r}
+ggplot(data=penguins, mapping=(aes(x=species, y=bill_length_mm)))+
+  geom_boxplot(mapping=aes(color=species)) + theme_classic() +
+  xlab("species")+ 
+  ylab("bill length (mm)")
+```
+
+
+## Relationship between multiple traits
+
+Is there a correlation between flipper length and bill length?
+
+```{r}
+ggplot(data=penguins, mapping=(aes(x=flipper_length_mm, y=bill_length_mm)))+
+  geom_point(mapping=aes(color=species))+
+  geom_smooth(method=lm, mapping=aes(color=species))+
+  theme_classic()+
+  xlab("flipper length (mm)")+ 
+  ylab("bill length (mm)")
+
+  #facet_wrap(~species)
+```
+
+
+
+
+## Sexual dimorphism
+
+Does flipper length differ by sex?
+
+```{r}
+penguins_no_na <- penguins %>% filter(!is.na(sex))
+#removes data with "NA"
+
+penguins_no_na %>% ggplot(aes(x=species, y=flipper_length_mm))+
+  geom_point(aes(color=sex))+
+  theme_classic()+
+  ylab("flipper length (mm)")
+```
+
