@@ -1,0 +1,13 @@
+name: "palmer-penguins"
+navbar:
+  title: "Palmer Penguins"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Single Trait Distribution"
+      href: single-trait-distribution.html
+    - text: "Relationhip Between Multiple Traits"
+      href: multiple-traits.html
+    - text: "Sexual Dimorphism"
+      href: sexual-dimorphism
+output_dir: "."

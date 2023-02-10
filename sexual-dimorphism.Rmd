@@ -1,0 +1,24 @@
+---
+title: "Sexual Dimorphism"
+author: "Martina Morelli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sexual dimorphism
+
+Does flipper length differ by sex?
+
+```{r}
+penguins_no_na <- penguins %>% filter(!is.na(sex))
+#removes data with "NA"
+
+penguins_no_na %>% ggplot(aes(x=species, y=flipper_length_mm))+
+  geom_point(aes(color=sex))+
+  theme_classic()+
+  ylab("flipper length (mm)")
+```

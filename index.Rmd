@@ -1,5 +1,10 @@
 ---
-title: "Penguins Website"
+title: "Palmer Penguins"
+left:
+  - text: "Home"
+    href: index.Rmd
+    text: "Single trait distribution"
+    href: Single-trait-distribution.html
 author: "Martina Morelli"
 date: "`r Sys.Date()`"
 output: html_document
